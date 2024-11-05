@@ -8,12 +8,10 @@ const createBtn = document.querySelector("button[data-create]");
 const destroyBtn = document.querySelector("button[data-destroy]");
 const boxes = document.querySelector("#boxes");
 
-let sizes = 30;
-
 createBtn.addEventListener("click", createMarkup);
 
 function createMarkup(event) {
-  if (Number(inputNum.value) < 0 || Number(inputNum.value) > 100) {
+  if (Number(inputNum.value) <= 0 || Number(inputNum.value) > 100) {
     console.log("the number is not within the range 1-100");
     return;
   }
@@ -23,6 +21,8 @@ function createMarkup(event) {
 
 function createBoxes(amount) {
   const arr = [];
+
+  let sizes = 30;
 
   for (let i = 0; i < amount; i++) {
     const myBox = document.createElement("div");
@@ -41,6 +41,5 @@ destroyBtn.addEventListener("click", destroyBoxes);
 
 function destroyBoxes(event) {
   boxes.innerHTML = "";
-  sizes = 30;
   inputNum.value = "";
 }
